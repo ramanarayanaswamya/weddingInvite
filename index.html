@@ -3,274 +3,296 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Arjun ❤️ Meera | Wedding</title>
+<title>Preethi ❤️ Ram | Wedding Invitation</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Playfair+Display&display=swap" rel="stylesheet">
 
 <style>
 :root{
-  --gold:#d4af37;
-  --dark:#0f0f0f;
-  --soft:#1c1c1c;
+  --cream:#f5efe6;
+  --dark-maroon:#5c3333;
+  --light-rose:#d4a5a5;
+  --gold:#c6a75e;
+  --soft-brown:#8b5a5a;
 }
 
-*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif}
-body{background:var(--dark);color:white;overflow-x:hidden}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
-/* ENTRY SCREEN */
+body{
+  font-family:'Playfair Display',serif;
+  background:var(--cream);
+  background-image:url("https://www.transparenttextures.com/patterns/paper-fibers.png");
+  color:var(--dark-maroon);
+  overflow-x:hidden;
+  scroll-behavior:smooth;
+}
 
-#entry{
-  position:fixed;
-  inset:0;
-  background:black;
+/* SECTION BASE */
+section{
+  min-height:100vh;
   display:flex;
+  flex-direction:column;
   justify-content:center;
   align-items:center;
-  flex-direction:column;
-  z-index:9999;
   text-align:center;
-  animation:fadeIn 2s ease;
+  padding:60px 20px;
+  position:relative;
+  opacity:0;
+  transform:translateY(40px);
+  transition:all 1s ease;
 }
 
-#entry h1{
-  font-family:Cinzel;
-  color:var(--gold);
+section.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* FLORAL CORNERS */
+.corner{
+  position:absolute;
+  width:70px;
+  height:70px;
+  background:url("https://i.imgur.com/7bKQ9YB.png") no-repeat center/contain;
+  opacity:0.6;
+}
+
+.top-left{top:20px;left:20px;}
+.top-right{top:20px;right:20px;transform:rotate(90deg);}
+.bottom-left{bottom:20px;left:20px;transform:rotate(-90deg);}
+.bottom-right{bottom:20px;right:20px;transform:rotate(180deg);}
+
+/* TITLES */
+h1{
+  font-family:'Cinzel';
   font-size:2.5rem;
   letter-spacing:2px;
-}
-
-#enterBtn{
-  margin-top:30px;
-  padding:12px 30px;
-  border:1px solid var(--gold);
-  background:transparent;
-  color:var(--gold);
-  cursor:pointer;
-  transition:.4s;
-}
-#enterBtn:hover{
-  background:var(--gold);
-  color:black;
-}
-
-/* HERO */
-
-.hero{
-  height:100vh;
-  background:url("https://picsum.photos/1600/1000?blur=3") center/cover;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  position:relative;
-}
-
-.hero::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:rgba(0,0,0,.6);
-}
-
-.hero-content{
-  position:relative;
-  z-index:1;
-}
-
-.hero h1{
-  font-family:Cinzel;
-  font-size:3rem;
-  color:var(--gold);
-}
-
-.hero p{margin-top:10px;font-size:1.1rem}
-
-/* BUTTONS */
-
-.controls{
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-  z-index:1000;
-}
-
-.control-btn{
-  background:var(--gold);
-  border:none;
-  padding:10px 14px;
-  border-radius:30px;
-  cursor:pointer;
-  font-size:.8rem;
-}
-
-/* SECTION */
-
-section{
-  padding:80px 20px;
-  text-align:center;
+  margin-bottom:20px;
 }
 
 h2{
-  font-family:Cinzel;
-  color:var(--gold);
+  font-family:'Cinzel';
+  font-size:1.8rem;
+  margin-bottom:20px;
+}
+
+p{
+  max-width:700px;
+  font-size:1.1rem;
+  line-height:1.9;
+  color:var(--soft-brown);
+}
+
+/* GOLD ANIMATED DIVIDER */
+.divider{
+  width:0;
+  height:3px;
+  background:linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin:25px auto;
+  animation:grow 2s forwards;
+}
+
+@keyframes grow{
+  from{ width:0; }
+  to{ width:200px; }
+}
+
+/* DIYA GLOW */
+.diya{
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  background:radial-gradient(circle,#ffcc66,#ff9900,#cc6600);
+  box-shadow:0 0 25px orange;
+  margin-bottom:20px;
+  animation:flicker 1.5s infinite alternate;
+}
+
+@keyframes flicker{
+  from{ transform:scale(1); opacity:0.8; }
+  to{ transform:scale(1.15); opacity:1; }
+}
+
+/* COVER */
+#cover img{
+  width:140px;
   margin-bottom:30px;
 }
 
-/* EVENT BOX */
-
-.event-box{
-  background:var(--soft);
-  padding:25px;
-  border-radius:12px;
-  max-width:500px;
-  margin:auto;
+/* DETAILS BOX */
+.details-box{
+  background:rgba(212,165,165,0.15);
+  border:2px solid var(--gold);
+  padding:30px;
+  border-radius:15px;
+  margin-top:30px;
+  max-width:700px;
 }
 
-/* GALLERY */
-
-.gallery{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
-  gap:8px;
+/* CARICATURE */
+.caricature{
+  width:200px;
+  margin-top:30px;
 }
 
-.gallery img{
-  width:100%;
-  border-radius:8px;
-  cursor:pointer;
-  transition:.3s;
-}
-.gallery img:hover{transform:scale(1.05)}
-
-/* LIGHTBOX */
-
-#lightbox{
+/* MUSIC BUTTON */
+.music-btn{
   position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.9);
-  display:none;
-  justify-content:center;
-  align-items:center;
-  z-index:999;
+  bottom:25px;
+  right:25px;
+  background:var(--dark-maroon);
+  color:#fff;
+  padding:12px 18px;
+  border:none;
+  border-radius:50px;
+  font-family:'Cinzel';
+  cursor:pointer;
+  z-index:100;
 }
 
-#lightbox img{
-  max-width:90%;
-  max-height:80%;
-  border-radius:10px;
+/* FOOTER HASHTAG */
+.hashtag{
+  margin-top:40px;
+  font-family:'Cinzel';
+  font-size:1.2rem;
+  color:var(--gold);
 }
 
-/* MOBILE */
-
+/* RESPONSIVE */
 @media(max-width:768px){
-  .hero h1{font-size:2rem}
+  h1{font-size:1.8rem;}
+  h2{font-size:1.4rem;}
+  p{font-size:1rem;}
 }
 </style>
 </head>
 
 <body>
 
-<!-- ENTRY SCREEN -->
-<div id="entry">
-  <h1>Arjun ❤️ Meera</h1>
-  <p>You are invited to our Wedding</p>
-  <button id="enterBtn">Enter Invitation</button>
-</div>
+<!-- COVER -->
+<section id="cover" class="show">
+  <div class="corner top-left"></div>
+  <div class="corner top-right"></div>
+  <div class="corner bottom-left"></div>
+  <div class="corner bottom-right"></div>
 
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-content">
-    <h1 id="coupleNames">Arjun ❤️ Meera</h1>
-    <p id="weddingDate">12 December 2026 | Chennai</p>
-  </div>
-</div>
+  <img src="./assets/vinayagar golden.png" alt="Vinayagar">
+  <h1>Wedding Invitation</h1>
+  <div class="divider"></div>
+  <p>Thursday</p>
+  <p><b>30th April 2026</b></p>
+  <p style="margin-top:20px;">Scroll to reveal</p>
+</section>
 
-<!-- EVENT -->
+<!-- INVITE MESSAGE -->
 <section>
-  <h2 id="detailsTitle">Wedding Details</h2>
-  <div class="event-box">
-    <p id="venueText">Grand Palace Hall, Chennai</p>
-    <br>
-    <a href="https://maps.google.com" target="_blank">
-      <button class="control-btn">Open Google Maps</button>
-    </a>
-    <br><br>
-    <a href="https://wa.me/919999999999" target="_blank">
-      <button class="control-btn">RSVP on WhatsApp</button>
-    </a>
+  <p>
+  Blessed by family, united in grace, two hearts meet in time and place,<br>
+  wrapped in love and cherished dreams, together forever, as it seems.
+  </p>
+</section>
+
+<!-- GROOM -->
+<section>
+  <div class="diya"></div>
+  <h2>The Groom</h2>
+  <div class="divider"></div>
+  <h1>A. Rama Narayanaswamy, MCA.,</h1>
+  <p>Son of Mr. N.Asokan & Mrs. A.Neelavathi</p>
+</section>
+
+<!-- BRIDE -->
+<section>
+  <div class="diya"></div>
+  <h2>The Bride</h2>
+  <div class="divider"></div>
+  <h1>Preethi Kannan, B.E.(CSE)</h1>
+  <p>Daughter of Mr. J.Kamala Kannan & (Late) K.Sarasmathi</p>
+</section>
+
+<!-- DATE & TIME -->
+<section>
+  <h2>Wedding Ceremony</h2>
+  <div class="divider"></div>
+  <p><b>Thursday, 30th April 2026</b></p>
+  <p>Between 7:30 AM – 9:30 AM</p>
+
+  <div class="divider"></div>
+
+  <h2>Reception</h2>
+  <p><b>29th April 2026</b></p>
+  <p>Wednesday, 7:00 PM onwards</p>
+</section>
+
+<!-- VENUE -->
+<section>
+  <h2>Venue</h2>
+  <div class="divider"></div>
+  <div class="details-box">
+    <p><b>Geetha Citadel Wedding & Conventions</b></p>
+    <p>
+    No.4, Iyankulam, Paruthipattu,<br>
+    Avadi to Mt. Poonamallee Highway,<br>
+    Chennai - 600071<br>
+    (Opposite to Avadi Jeyachandran Textiles)
+    </p>
   </div>
 </section>
 
-<!-- GALLERY -->
+<!-- CARICATURE -->
 <section>
-  <h2>Memories</h2>
-  <div class="gallery" id="gallery"></div>
+  <h2>Our Story Begins ❤️</h2>
+  <div class="divider"></div>
+  <img src="./assets/caricature.png" class="caricature" alt="Couple Caricature">
 </section>
 
-<!-- LIGHTBOX -->
-<div id="lightbox" onclick="closeLightbox()">
-  <img id="lightbox-img">
-</div>
+<!-- COMPLIMENTS -->
+<section>
+  <h2>With Best Compliments From</h2>
+  <div class="divider"></div>
+  <div class="details-box">
+    <p>N. Ananthan, A. Padmavathy</p>
+    <p>D.N. Shankar, Jayalakshmi Shankar</p>
+    <p>R. Hariharan, A. Aiswarya</p>
+  </div>
 
-<!-- MUSIC -->
+  <div class="hashtag">
+    With Love,<br>
+    #PReAM
+  </div>
+</section>
+
+<button class="music-btn" onclick="toggleMusic()">🎵 Music</button>
+
 <audio id="bgMusic" loop>
-  <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
+<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_8f5e8a79e3.mp3?filename=indian-instrumental-110624.mp3" type="audio/mp3">
 </audio>
 
-<!-- CONTROLS -->
-<div class="controls">
-  <button class="control-btn" onclick="toggleMusic()">🎵 Music</button>
-  <button class="control-btn" onclick="toggleLang()">🌐 Tamil/English</button>
-</div>
-
 <script>
+const sections = document.querySelectorAll("section");
 
-/* ENTRY */
-document.getElementById("enterBtn").onclick=function(){
-  document.getElementById("entry").style.display="none";
-  document.getElementById("bgMusic").play();
-}
+window.addEventListener("scroll", () => {
+  sections.forEach(sec => {
+    const top = sec.getBoundingClientRect().top;
+    if(top < window.innerHeight - 100){
+      sec.classList.add("show");
+    }
+  });
+});
 
-/* MUSIC */
+let isPlaying=false;
 function toggleMusic(){
-  let music=document.getElementById("bgMusic");
-  music.paused?music.play():music.pause();
-}
-
-/* LANGUAGE TOGGLE */
-let tamil=false;
-function toggleLang(){
-  tamil=!tamil;
-  if(tamil){
-    document.getElementById("detailsTitle").innerText="திருமண விவரங்கள்";
-    document.getElementById("venueText").innerText="கிராண்ட் பேலஸ் ஹால், சென்னை";
+  const audio=document.getElementById("bgMusic");
+  if(isPlaying){
+    audio.pause();
   }else{
-    document.getElementById("detailsTitle").innerText="Wedding Details";
-    document.getElementById("venueText").innerText="Grand Palace Hall, Chennai";
+    audio.play();
   }
+  isPlaying=!isPlaying;
 }
-
-/* SMART GALLERY (simulate 353 images) */
-const gallery=document.getElementById("gallery");
-for(let i=1;i<=50;i++){   // change 50 to 353 when real photos uploaded
-  let img=document.createElement("img");
-  img.src=`https://picsum.photos/300/300?random=${i}`;
-  img.loading="lazy";
-  img.onclick=function(){
-    document.getElementById("lightbox").style.display="flex";
-    document.getElementById("lightbox-img").src=this.src;
-  }
-  gallery.appendChild(img);
-}
-
-/* LIGHTBOX */
-function closeLightbox(){
-  document.getElementById("lightbox").style.display="none";
-}
-
 </script>
 
 </body>

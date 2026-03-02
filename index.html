@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arjun ❤️ Meera | Wedding</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --gold:#d4af37;
+  --dark:#0f0f0f;
+  --soft:#1c1c1c;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif}
+body{background:var(--dark);color:white;overflow-x:hidden}
+
+/* ENTRY SCREEN */
+
+#entry{
+  position:fixed;
+  inset:0;
+  background:black;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  z-index:9999;
+  text-align:center;
+  animation:fadeIn 2s ease;
+}
+
+#entry h1{
+  font-family:Cinzel;
+  color:var(--gold);
+  font-size:2.5rem;
+  letter-spacing:2px;
+}
+
+#enterBtn{
+  margin-top:30px;
+  padding:12px 30px;
+  border:1px solid var(--gold);
+  background:transparent;
+  color:var(--gold);
+  cursor:pointer;
+  transition:.4s;
+}
+#enterBtn:hover{
+  background:var(--gold);
+  color:black;
+}
+
+/* HERO */
+
+.hero{
+  height:100vh;
+  background:url("https://picsum.photos/1600/1000?blur=3") center/cover;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  position:relative;
+}
+
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,.6);
+}
+
+.hero-content{
+  position:relative;
+  z-index:1;
+}
+
+.hero h1{
+  font-family:Cinzel;
+  font-size:3rem;
+  color:var(--gold);
+}
+
+.hero p{margin-top:10px;font-size:1.1rem}
+
+/* BUTTONS */
+
+.controls{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  z-index:1000;
+}
+
+.control-btn{
+  background:var(--gold);
+  border:none;
+  padding:10px 14px;
+  border-radius:30px;
+  cursor:pointer;
+  font-size:.8rem;
+}
+
+/* SECTION */
+
+section{
+  padding:80px 20px;
+  text-align:center;
+}
+
+h2{
+  font-family:Cinzel;
+  color:var(--gold);
+  margin-bottom:30px;
+}
+
+/* EVENT BOX */
+
+.event-box{
+  background:var(--soft);
+  padding:25px;
+  border-radius:12px;
+  max-width:500px;
+  margin:auto;
+}
+
+/* GALLERY */
+
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+  gap:8px;
+}
+
+.gallery img{
+  width:100%;
+  border-radius:8px;
+  cursor:pointer;
+  transition:.3s;
+}
+.gallery img:hover{transform:scale(1.05)}
+
+/* LIGHTBOX */
+
+#lightbox{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.9);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:999;
+}
+
+#lightbox img{
+  max-width:90%;
+  max-height:80%;
+  border-radius:10px;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+  .hero h1{font-size:2rem}
+}
+</style>
+</head>
+
+<body>
+
+<!-- ENTRY SCREEN -->
+<div id="entry">
+  <h1>Arjun ❤️ Meera</h1>
+  <p>You are invited to our Wedding</p>
+  <button id="enterBtn">Enter Invitation</button>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-content">
+    <h1 id="coupleNames">Arjun ❤️ Meera</h1>
+    <p id="weddingDate">12 December 2026 | Chennai</p>
+  </div>
+</div>
+
+<!-- EVENT -->
+<section>
+  <h2 id="detailsTitle">Wedding Details</h2>
+  <div class="event-box">
+    <p id="venueText">Grand Palace Hall, Chennai</p>
+    <br>
+    <a href="https://maps.google.com" target="_blank">
+      <button class="control-btn">Open Google Maps</button>
+    </a>
+    <br><br>
+    <a href="https://wa.me/919999999999" target="_blank">
+      <button class="control-btn">RSVP on WhatsApp</button>
+    </a>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section>
+  <h2>Memories</h2>
+  <div class="gallery" id="gallery"></div>
+</section>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" onclick="closeLightbox()">
+  <img id="lightbox-img">
+</div>
+
+<!-- MUSIC -->
+<audio id="bgMusic" loop>
+  <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
+</audio>
+
+<!-- CONTROLS -->
+<div class="controls">
+  <button class="control-btn" onclick="toggleMusic()">🎵 Music</button>
+  <button class="control-btn" onclick="toggleLang()">🌐 Tamil/English</button>
+</div>
+
+<script>
+
+/* ENTRY */
+document.getElementById("enterBtn").onclick=function(){
+  document.getElementById("entry").style.display="none";
+  document.getElementById("bgMusic").play();
+}
+
+/* MUSIC */
+function toggleMusic(){
+  let music=document.getElementById("bgMusic");
+  music.paused?music.play():music.pause();
+}
+
+/* LANGUAGE TOGGLE */
+let tamil=false;
+function toggleLang(){
+  tamil=!tamil;
+  if(tamil){
+    document.getElementById("detailsTitle").innerText="திருமண விவரங்கள்";
+    document.getElementById("venueText").innerText="கிராண்ட் பேலஸ் ஹால், சென்னை";
+  }else{
+    document.getElementById("detailsTitle").innerText="Wedding Details";
+    document.getElementById("venueText").innerText="Grand Palace Hall, Chennai";
+  }
+}
+
+/* SMART GALLERY (simulate 353 images) */
+const gallery=document.getElementById("gallery");
+for(let i=1;i<=50;i++){   // change 50 to 353 when real photos uploaded
+  let img=document.createElement("img");
+  img.src=`https://picsum.photos/300/300?random=${i}`;
+  img.loading="lazy";
+  img.onclick=function(){
+    document.getElementById("lightbox").style.display="flex";
+    document.getElementById("lightbox-img").src=this.src;
+  }
+  gallery.appendChild(img);
+}
+
+/* LIGHTBOX */
+function closeLightbox(){
+  document.getElementById("lightbox").style.display="none";
+}
+
+</script>
+
+</body>
+</html>

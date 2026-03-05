@@ -22,13 +22,69 @@
   box-sizing:border-box;
 }
 
+html{
+  width: 100%;
+  overflow-x: hidden;
+}
+
 body{
   font-family:'Playfair Display',serif;
-  background:var(--cream);
-  background-image:url("https://www.transparenttextures.com/patterns/paper-fibers.png");
+  background-color: transparent;
   color:var(--dark-maroon);
-  overflow-x:hidden;
   scroll-behavior:smooth;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* enable snap on main scrolling */
+html, body {
+  scroll-snap-type: y mandatory;
+  height: 100%;
+  overflow-y: scroll;
+}
+
+/* HEADER */
+header{
+  width: 100%;
+  background-image: url('./assets/topheaderfloralborder.png');
+  background-repeat: no-repeat;
+      background-position: top center;
+  background-size: 100% auto;
+  height: auto;
+  min-height: 246px;
+  max-height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: sticky;
+  top: 0;
+  z-index: 10000;
+}
+
+/* MAIN CONTAINER */
+.main-container{
+  min-height: calc(100vh - 150px);
+  padding: 40px 20px;
+}
+
+/* FOOTER */
+footer{
+  width: 100%;
+  background-image: url('./assets/footerfloralborder.png');
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  background-size: 100% auto;
+  height: auto;
+  min-height: 308px;
+  max-height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: sticky;
+  bottom: 0;
+  z-index: 10000;
 }
 
 /* SECTION BASE */
@@ -39,11 +95,12 @@ section{
   justify-content:center;
   align-items:center;
   text-align:center;
-  padding:60px 20px;
+  padding:40px 20px;
   position:relative;
   opacity:0;
   transform:translateY(40px);
   transition:all 1s ease;
+  scroll-snap-align: start;
 }
 
 section.show{
@@ -52,13 +109,13 @@ section.show{
 }
 
 /* FLORAL CORNERS */
-.corner{
+/* .corner{
   position:absolute;
   width:70px;
   height:70px;
   background:url("https://i.imgur.com/7bKQ9YB.png") no-repeat center/contain;
   opacity:0.6;
-}
+} */
 
 .top-left{top:20px;left:20px;}
 .top-right{top:20px;right:20px;transform:rotate(90deg);}
@@ -166,11 +223,18 @@ p{
   h1{font-size:1.8rem;}
   h2{font-size:1.4rem;}
   p{font-size:1rem;}
+  header{ height: 100px; }
+  footer{ height: 100px; }
+  .main-container{ padding: 30px 15px; }
 }
 </style>
 </head>
 
 <body>
+
+<header></header>
+
+<div class="main-container">
 
 <!-- COVER -->
 <section id="cover" class="show">
@@ -188,7 +252,7 @@ p{
 </section>
 
 <!-- INVITE MESSAGE -->
-<section>
+<section id="cover" class="show">
   <p>
   Blessed by family, united in grace, two hearts meet in time and place,<br>
   wrapped in love and cherished dreams, together forever, as it seems.
@@ -196,7 +260,7 @@ p{
 </section>
 
 <!-- GROOM -->
-<section>
+<section id="cover" class="show">
   <div class="diya"></div>
   <h2>The Groom</h2>
   <div class="divider"></div>
@@ -205,7 +269,7 @@ p{
 </section>
 
 <!-- BRIDE -->
-<section>
+<section id="cover" class="show">
   <div class="diya"></div>
   <h2>The Bride</h2>
   <div class="divider"></div>
@@ -214,7 +278,7 @@ p{
 </section>
 
 <!-- DATE & TIME -->
-<section>
+<section id="cover" class="show">
   <h2>Wedding Ceremony</h2>
   <div class="divider"></div>
   <p><b>Thursday, 30th April 2026</b></p>
@@ -228,7 +292,7 @@ p{
 </section>
 
 <!-- VENUE -->
-<section>
+<section id="cover" class="show">
   <h2>Venue</h2>
   <div class="divider"></div>
   <div class="details-box">
@@ -243,20 +307,48 @@ p{
 </section>
 
 <!-- CARICATURE -->
-<section>
+<section id="cover" class="show">
   <h2>Our Story Begins ❤️</h2>
   <div class="divider"></div>
   <img src="./assets/caricature.png" class="caricature" alt="Couple Caricature">
 </section>
 
 <!-- COMPLIMENTS -->
-<section>
+<section id="cover" class="show">
   <h2>With Best Compliments From</h2>
   <div class="divider"></div>
+  <div style="display:flex; justify-content:space-around; gap:20px; flex-wrap:wrap;">
   <div class="details-box">
     <p>N. Ananthan, A. Padmavathy</p>
     <p>D.N. Shankar, Jayalakshmi Shankar</p>
     <p>R. Hariharan, A. Aiswarya</p>
+    <!-- <p>R. Santhana Krishanan, S. Shanthi</p>
+    <p>K. Manorama Kannaiyan</p>
+    <p>G. Bhuvaneshwari Gunasekaran</p>
+    <p>B. Sridhar, S. Maheswari</p>
+    <p>K. Rameshbabu, R. Rupavathi</p>
+    <p>G. Suseendaran, S. KavyaPriya</p>
+    <p>S. Balaji, B. Deepthi</p> -->
+
+
+  </div>
+  <div class="details-box">
+    <p>A.S. Jayaraman Naidu, J. Saraswathy</p>
+    <p>K. Karthi Kothandaram</p>
+    <!-- <p>J. Sathish Kumar, S. Yamunabai</p>
+    <p>C. Vasudevan, V. Shobana</p>
+    <p>G. Balaji, B. Bharathi</p>
+    <p>M.S. Sridhar, S. Roopa</p>
+    <p>M.S. Sarathi, S. Ramya</p>
+    <p>C.V. Naveen</p>
+    <p>C.V. Balakrishnan</p>    
+    <p>S. Manasa</p>
+    <p>B. Sahitya</p>
+    <p>B. Harini</p>      
+    <p>M.S. Tharun</p>
+    <p>M.S. Chinmai</p>
+    <p>M.S. Joshnika</p> -->
+  </div>
   </div>
 
   <div class="hashtag">
@@ -264,6 +356,10 @@ p{
     #PReAM
   </div>
 </section>
+
+</div>
+
+<footer></footer>
 
 <button class="music-btn" onclick="toggleMusic()">🎵 Music</button>
 

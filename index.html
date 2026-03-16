@@ -161,9 +161,11 @@ p{
 .diya{
   width:50px;
   height:50px;
-  border-radius:50%;
-  background:radial-gradient(circle,#ffcc66,#ff9900,#cc6600);
-  box-shadow:0 0 25px orange;
+  /*border-radius:50%;*/
+  background-image: url('./assets/preamlogo.png');
+  background-size: cover;
+  background-position: center;
+  /*box-shadow:0 0 25px orange;*/
   margin-bottom:20px;
   animation:flicker 1.5s infinite alternate;
 }
@@ -226,6 +228,30 @@ p{
   header{ height: 100px; }
   footer{ height: 100px; }
   .main-container{ padding: 30px 15px; }
+  
+  .details-box{
+    padding: 20px 15px;
+    margin-top: 20px;
+    border-radius: 10px;
+  }
+  
+  .details-box p{
+    font-size: 0.95rem;
+    margin: 8px 0;
+  }
+  
+  .details-box a{
+    display: inline-block;
+    margin-top: 12px;
+    padding: 8px 16px;
+    background: rgba(198, 167, 94, 0.2);
+    border-radius: 20px;
+    transition: all 0.3s ease;
+  }
+  
+  .details-box a:hover{
+    background: rgba(198, 167, 94, 0.4);
+  }
 }
 </style>
 </head>
@@ -262,48 +288,44 @@ p{
 <!-- GROOM -->
 <section id="cover" class="show">
   <div class="diya"></div>
-  <h2>The Groom</h2>
+  <h2 style="margin-bottom:0px">The Groom</h2>
   <div class="divider"></div>
-  <h1>A. Rama Narayanaswamy, MCA.,</h1>
-  <p>Son of Mr. N.Asokan & Mrs. A.Neelavathi</p>
+  <h1 style="font-size:1rem;margin-bottom:0px">A. Rama Narayanaswamy</h1>
+  <p style="font-size:0.8rem">Son of <br> Mr. N.Asokan & Mrs. A.Neelavathi</p>
 </section>
 
 <!-- BRIDE -->
 <section id="cover" class="show">
   <div class="diya"></div>
-  <h2>The Bride</h2>
+  <h2 style="margin-bottom:0px">The Bride</h2>
   <div class="divider"></div>
-  <h1>Preethi Kannan, B.E.(CSE)</h1>
-  <p>Daughter of Mr. J.Kamala Kannan & (Late) K.Sarasmathi</p>
+  <h1 style="font-size:1rem;margin-bottom:0px">Preethi Kannan</h1>
+  <p style="font-size:0.8rem">Daughter of <br> Mr. J.Kamala Kannan & (Late) K.Sarasmathi</p>
 </section>
 
 <!-- DATE & TIME -->
 <section id="cover" class="show">
-  <h2>Wedding Ceremony</h2>
   <div class="divider"></div>
+  <h2 style="margin-bottom: 0px;">Reception</h2>
+  <p><b>Wednesday, 29th April 2026</b></p>
+  <p> 7:00 PM onwards</p>
+
+  <div class="divider"></div>  
+  <h2 style="margin-bottom: 0px;">Muhurtham</h2>  
   <p><b>Thursday, 30th April 2026</b></p>
   <p>Between 7:30 AM – 9:30 AM</p>
-
-  <div class="divider"></div>
-
-  <h2>Reception</h2>
-  <p><b>29th April 2026</b></p>
-  <p>Wednesday, 7:00 PM onwards</p>
 </section>
 
 <!-- VENUE -->
 <section id="cover" class="show">
-  <h2>Venue</h2>
+  <h2 style="margin-bottom: 0px;">Venue</h2>
   <div class="divider"></div>
-  <div class="details-box">
-    <p><b>Geetha Citadel Wedding & Conventions</b></p>
-    <p>
-    No.4, Iyankulam, Paruthipattu,<br>
-    Avadi to Mt. Poonamallee Highway,<br>
-    Chennai - 600071<br>
-    (Opposite to Avadi Jeyachandran Textiles)
-    </p>
-  </div>
+  <p><b>Geetha Citadel Wedding & Conventions</b></p>
+  <p style="font-size:0.8rem;">
+  Avadi to Mt. Poonamallee Highway,<br>
+  (Opposite to Avadi Jeyachandran Textiles)
+  </p>
+  <p style="margin-top: 20px;"><a href="https://share.google/CvwjMUELL6ChCllKB" target="_blank" style="color: var(--gold); font-weight: bold; text-decoration: none; background: rgba(198, 167, 94, 0.15); padding: 10px 20px; border-radius: 20px; display: inline-block;">Click here for Map</a></p>
 </section>
 
 <!-- CARICATURE -->
@@ -315,13 +337,15 @@ p{
 
 <!-- COMPLIMENTS -->
 <section id="cover" class="show">
-  <h2>With Best Compliments From</h2>
+  <h2 style="font-size: 1rem;margin-bottom: 0px;">With Best Compliments From</h2>
   <div class="divider"></div>
   <div style="display:flex; justify-content:space-around; gap:20px; flex-wrap:wrap;">
   <div class="details-box">
+    <p>A.S. Jayaraman Naidu, J. Saraswathy</p>
     <p>N. Ananthan, A. Padmavathy</p>
     <p>D.N. Shankar, Jayalakshmi Shankar</p>
     <p>R. Hariharan, A. Aiswarya</p>
+    <p>K. Karthi Kothandaram</p>
     <!-- <p>R. Santhana Krishanan, S. Shanthi</p>
     <p>K. Manorama Kannaiyan</p>
     <p>G. Bhuvaneshwari Gunasekaran</p>
@@ -332,10 +356,10 @@ p{
 
 
   </div>
-  <div class="details-box">
-    <p>A.S. Jayaraman Naidu, J. Saraswathy</p>
-    <p>K. Karthi Kothandaram</p>
-    <!-- <p>J. Sathish Kumar, S. Yamunabai</p>
+  <!-- <div class="details-box">
+    
+    
+    <p>J. Sathish Kumar, S. Yamunabai</p>
     <p>C. Vasudevan, V. Shobana</p>
     <p>G. Balaji, B. Bharathi</p>
     <p>M.S. Sridhar, S. Roopa</p>
@@ -347,8 +371,8 @@ p{
     <p>B. Harini</p>      
     <p>M.S. Tharun</p>
     <p>M.S. Chinmai</p>
-    <p>M.S. Joshnika</p> -->
-  </div>
+    <p>M.S. Joshnika</p> 
+  </div>-->
   </div>
 
   <div class="hashtag">

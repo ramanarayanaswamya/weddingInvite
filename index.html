@@ -158,6 +158,17 @@ p{
 }
 
 /* DIYA GLOW */
+.bigdiya{
+  width:250px;
+  height:250px;
+  /*border-radius:50%;*/
+  background-image: url('./assets/preamlogo.png');
+  background-size: cover;
+  background-position: center;
+  /*box-shadow:0 0 25px orange;*/
+  margin-bottom:20px;
+  animation:flicker 1.5s infinite alternate;
+}
 .diya{
   width:50px;
   height:50px;
@@ -253,16 +264,60 @@ p{
     background: rgba(198, 167, 94, 0.4);
   }
 }
+
+#introOverlay{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  backdrop-filter: blur(12px);
+  background: rgba(0,0,0,0.4);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  z-index: 999999; /* above everything */
+  cursor: pointer;
+
+  transition: opacity 0.8s ease;
+}
+
+.intro-content{
+  color: white;
+  font-family: 'Cinzel';
+}
+
+.intro-content h2{
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.intro-content p{
+  font-size: 1rem;
+  opacity: 0.8;
+  letter-spacing: 2px;
+}
 </style>
 </head>
 
 <body>
+  <div id="introOverlay" onclick="enterSite()">
+  <div class="intro-content">
+    <div class="bigdiya"></div>
+    <h3>Tap to Enter</h3>
+  </div>
+</div>
 
 <header></header>
 
 <div class="main-container">
 
 <!-- COVER -->
+
 <section id="cover" class="show">
   <div class="corner top-left"></div>
   <div class="corner top-right"></div>
@@ -393,57 +448,59 @@ p{
 </audio>
 
 <script>
+/* 1. GET ELEMENTS FIRST */
+const music = document.getElementById("bgMusic");
 const sections = document.querySelectorAll("section");
 
+
+/* 2. SECTION ANIMATION (keep your existing behavior) */
 window.addEventListener("scroll", () => {
   sections.forEach(sec => {
     const top = sec.getBoundingClientRect().top;
-    if(top < window.innerHeight - 100){
+    if (top < window.innerHeight - 100) {
       sec.classList.add("show");
     }
   });
 });
 
-// let isPlaying = false;
-// const music = document.getElementById("bgMusic");
 
-// function toggleMusic() {
-//   if (isPlaying) {
-//     music.pause();
-//   } else {
-//     music.play().catch(err => console.log(err));
-//   }
-//   isPlaying = !isPlaying;
-// }
-
-
-
-
-
-const music = document.getElementById("bgMusic");
-function startMusicOnScroll() {
+/* 3. INTRO SCREEN (tap to enter) */
+function enterSite() {
   music.play().then(() => {
-    console.log("Music started on scroll");
-  }).catch(err => {
-    console.log("Blocked:", err);
-  });
+    fadeInMusic();
+  }).catch(err => console.log(err));
 
-  window.removeEventListener("scroll", startMusicOnScroll);
+  const overlay = document.getElementById("introOverlay");
+  overlay.style.opacity = "0";
+
+  setTimeout(() => {
+    overlay.style.display = "none";
+  }, 800);
 }
 
-// Trigger on first scroll only
-window.addEventListener("scroll", startMusicOnScroll);
 
+/* 4. FADE-IN MUSIC (premium feel) */
+function fadeInMusic() {
+  music.volume = 0;
+  let vol = 0;
+
+  const interval = setInterval(() => {
+    if (vol < 1) {
+      vol += 0.05;
+      music.volume = vol;
+    } else {
+      clearInterval(interval);
+    }
+  }, 200);
+}
+
+
+/* 5. MUSIC BUTTON CONTROL */
 function toggleMusic() {
   if (music.paused) {
-    music.play().then(() => {
-      console.log("Playing");
-    }).catch(err => {
-      console.log("Play failed:", err);
-    });
+    music.play().catch(err => console.log(err));
   } else {
     music.pause();
-    console.log("Paused");
   }
 }
 </script>

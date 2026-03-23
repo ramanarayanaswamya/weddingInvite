@@ -209,7 +209,7 @@ p{
   border-radius:50px;
   font-family:'Cinzel';
   cursor:pointer;
-  z-index:100;
+  z-index:99999;
 }
 
 /* FOOTER HASHTAG */
@@ -386,9 +386,10 @@ p{
 <footer></footer>
 
 <button class="music-btn" onclick="toggleMusic()">🎵 Music</button>
+<!-- <button class="music-btn" onclick="document.getElementById('bgMusic').play()">TEST PLAY</button> -->
 
 <audio id="bgMusic" loop>
-<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_8f5e8a79e3.mp3?filename=indian-instrumental-110624.mp3" type="audio/mp3">
+  <source src="./assets/MaangalyamTHeme.mp3" type="audio/mpeg">
 </audio>
 
 <script>
@@ -403,15 +404,47 @@ window.addEventListener("scroll", () => {
   });
 });
 
-let isPlaying=false;
-function toggleMusic(){
-  const audio=document.getElementById("bgMusic");
-  if(isPlaying){
-    audio.pause();
-  }else{
-    audio.play();
+// let isPlaying = false;
+// const music = document.getElementById("bgMusic");
+
+// function toggleMusic() {
+//   if (isPlaying) {
+//     music.pause();
+//   } else {
+//     music.play().catch(err => console.log(err));
+//   }
+//   isPlaying = !isPlaying;
+// }
+
+
+
+
+
+const music = document.getElementById("bgMusic");
+function startMusicOnScroll() {
+  music.play().then(() => {
+    console.log("Music started on scroll");
+  }).catch(err => {
+    console.log("Blocked:", err);
+  });
+
+  window.removeEventListener("scroll", startMusicOnScroll);
+}
+
+// Trigger on first scroll only
+window.addEventListener("scroll", startMusicOnScroll);
+
+function toggleMusic() {
+  if (music.paused) {
+    music.play().then(() => {
+      console.log("Playing");
+    }).catch(err => {
+      console.log("Play failed:", err);
+    });
+  } else {
+    music.pause();
+    console.log("Paused");
   }
-  isPlaying=!isPlaying;
 }
 </script>
 

@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Preethi ❤️ Ram | Wedding Invitation</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --cream:#f5efe6;
+  --dark-green:#1a472a;
+  --light-gold:#d4af37;
+  --soft-gold:#b8860b;
+  --text-brown:#4a4a4a;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body{
+  font-family:'Amiri',serif;
+  background-color: transparent;
+  color:var(--dark-green);
+  scroll-behavior:smooth;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* enable snap on main scrolling */
+html, body {
+  scroll-snap-type: y mandatory;
+  height: 100%;
+  overflow-y: scroll;
+}
+
+/* HEADER */
+header{
+  width: 100%;
+  background-image: url('./assets/islamic-header-border.png');
+  background-repeat: no-repeat;
+      background-position: top center;
+  background-size: 100% auto;
+  height: auto;
+  min-height: 246px;
+  max-height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: sticky;
+  top: 0;
+  z-index: 10000;
+}
+
+/* MAIN CONTAINER */
+.main-container{
+  min-height: calc(100vh - 150px);
+  padding: 40px 20px;
+}
+
+/* FOOTER */
+footer{
+  width: 100%;
+  background-image: url('./assets/islamic-footer-border.png');
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  background-size: 100% auto;
+  height: auto;
+  min-height: 308px;
+  max-height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: sticky;
+  bottom: 0;
+  z-index: 10000;
+}
+
+/* SECTION BASE */
+section{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:40px 20px;
+  position:relative;
+  opacity:0;
+  transform:translateY(40px);
+  transition:all 1s ease;
+  scroll-snap-align: start;
+}
+
+section.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* FLORAL CORNERS */
+/* .corner{
+  position:absolute;
+  width:70px;
+  height:70px;
+  background:url("https://i.imgur.com/7bKQ9YB.png") no-repeat center/contain;
+  opacity:0.6;
+} */
+
+.top-left{top:20px;left:20px;}
+.top-right{top:20px;right:20px;transform:rotate(90deg);}
+.bottom-left{bottom:20px;left:20px;transform:rotate(-90deg);}
+.bottom-right{bottom:20px;right:20px;transform:rotate(180deg);}
+
+/* TITLES */
+h1{
+  font-family:'Cinzel';
+  font-size:2.5rem;
+  letter-spacing:2px;
+  margin-bottom:20px;
+}
+
+h2{
+  font-family:'Cinzel';
+  font-size:1.8rem;
+  margin-bottom:20px;
+}
+
+p{
+  max-width:700px;
+  font-size:1.1rem;
+  line-height:1.9;
+  color:var(--text-brown);
+}
+
+/* GOLD ANIMATED DIVIDER */
+.divider{
+  width:0;
+  height:3px;
+  background:linear-gradient(90deg, transparent, var(--light-gold), transparent);
+  margin:25px auto;
+  animation:grow 2s forwards;
+}
+
+@keyframes grow{
+  from{ width:0; }
+  to{ width:200px; }
+}
+
+/* DIYA GLOW */
+.bigdiya{
+  width:250px;
+  height:250px;
+  /*border-radius:50%;*/
+  background-image: url('./assets/islamic-crescent-star.png');
+  background-size: cover;
+  background-position: center;
+  /*box-shadow:0 0 25px orange;*/
+  margin-bottom:20px;
+  animation:flicker 1.5s infinite alternate;
+}
+.diya{
+  width:50px;
+  height:50px;
+  /*border-radius:50%;*/
+  background-image: url('./assets/islamic-symbol-small.png');
+  background-size: cover;
+  background-position: center;
+  /*box-shadow:0 0 25px orange;*/
+  margin-bottom:20px;
+  animation:flicker 1.5s infinite alternate;
+}
+
+@keyframes flicker{
+  from{ transform:scale(1); opacity:0.8; }
+  to{ transform:scale(1.15); opacity:1; }
+}
+
+/* COVER */
+#cover img{
+  width:140px;
+  margin-bottom:30px;
+}
+
+/* DETAILS BOX */
+.details-box{
+  background:rgba(212, 175, 55, 0.15);
+  border:2px solid var(--light-gold);
+  padding:30px;
+  border-radius:15px;
+  margin-top:30px;
+  max-width:700px;
+}
+
+/* CARICATURE */
+.caricature{
+  width:200px;
+  margin-top:30px;
+}
+
+/* MUSIC BUTTON */
+.music-btn{
+  position:fixed;
+  bottom:25px;
+  right:25px;
+  background:var(--dark-green);
+  color:#fff;
+  padding:12px 18px;
+  border:none;
+  border-radius:50px;
+  font-family:'Cinzel';
+  cursor:pointer;
+  z-index:99999;
+}
+
+/* FOOTER HASHTAG */
+.hashtag{
+  margin-top:40px;
+  font-family:'Cinzel';
+  font-size:1.2rem;
+  color:var(--light-gold);
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  h1{font-size:1.8rem;}
+  h2{font-size:1.4rem;}
+  p{font-size:1rem;}
+  header{ height: 100px; }
+  footer{ height: 100px; }
+  .main-container{ padding: 30px 15px; }
+  
+  .details-box{
+    padding: 20px 15px;
+    margin-top: 20px;
+    border-radius: 10px;
+  }
+  
+  .details-box p{
+    font-size: 0.95rem;
+    margin: 8px 0;
+  }
+  
+  .details-box a{
+    display: inline-block;
+    margin-top: 12px;
+    padding: 8px 16px;
+    background: rgba(212, 175, 55, 0.2);
+    border-radius: 20px;
+    transition: all 0.3s ease;
+  }
+  
+  .details-box a:hover{
+    background: rgba(212, 175, 55, 0.4);
+  }
+}
+
+#introOverlay{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  backdrop-filter: blur(12px);
+  background: rgba(0,0,0,0.4);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  z-index: 999999; /* above everything */
+  cursor: pointer;
+
+  transition: opacity 0.8s ease;
+}
+
+.intro-content{
+  color: white;
+  font-family: 'Cinzel';
+}
+
+.intro-content h2{
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.intro-content p{
+  font-size: 1rem;
+  opacity: 0.8;
+  letter-spacing: 2px;
+}
+</style>
+</head>
+
+<body>
+  <div id="introOverlay" onclick="enterSite()">
+  <div class="intro-content">
+    <div class="bigdiya"></div>
+    <h3>✨ Bismillah - Tap to Enter ✨</h3>
+  </div>
+</div>
+
+<header></header>
+
+<div class="main-container">
+
+<!-- COVER -->
+
+<section id="cover" class="show">
+  <div class="corner top-left"></div>
+  <div class="corner top-right"></div>
+  <div class="corner bottom-left"></div>
+  <div class="corner bottom-right"></div>
+
+  <img src="./assets/islamic-crescent.png" alt="Islamic Symbol">
+  <h1>Wedding Invitation</h1>
+  <div class="divider"></div>
+  <p>Thursday</p>
+  <p><b>30th April 2026</b></p>
+  <p style="margin-top:20px;">Scroll to reveal</p>
+</section>
+
+<!-- INVITE MESSAGE -->
+<section id="cover" class="show">
+  <p>
+  Blessed by Allah's grace, two hearts unite as one,<br>
+  In love and faith, a new journey has begun.
+  </p>
+</section>
+
+<!-- GROOM -->
+<section id="cover" class="show">
+  <div class="diya"></div>
+  <h2 style="margin-bottom:0px">The Groom</h2>
+  <div class="divider"></div>
+  <h1 style="font-size:1rem;margin-bottom:0px">Rama Narayanaswamy</h1>
+  <p style="font-size:0.8rem">Son of <br> Mr. N.Asokan & Mrs. A.Neelavathi</p>
+</section>
+
+<!-- BRIDE -->
+<section id="cover" class="show">
+  <div class="diya"></div>
+  <h2 style="margin-bottom:0px">The Bride</h2>
+  <div class="divider"></div>
+  <h1 style="font-size:1rem;margin-bottom:0px">Preethi Kannan</h1>
+  <p style="font-size:0.8rem">Daughter of <br> Mr. J.Kamala Kannan & (Late) K.Sarasmathi</p>
+</section>
+
+<!-- DATE & TIME -->
+<section id="cover" class="show">
+  <div class="divider"></div>
+  <h2 style="margin-bottom: 0px;">Walima (Reception)</h2>
+  <p><b>Wednesday, 29th April 2026</b></p>
+  <p> 7:00 PM onwards</p>
+
+  <div class="divider"></div>  
+  <h2 style="margin-bottom: 0px;">Nikah (Wedding)</h2>  
+  <p><b>Thursday, 30th April 2026</b></p>
+  <p>Between 7:30 AM – 9:30 AM</p>
+</section>
+
+<!-- VENUE -->
+<section id="cover" class="show">
+  <h2 style="margin-bottom: 0px;">Venue</h2>
+  <div class="divider"></div>
+  <p><b>Geetha Citadel Wedding & Conventions</b></p>
+  <p style="font-size:0.8rem;">
+  Avadi to Mt. Poonamallee Highway,<br>
+  (Opposite to Avadi Jeyachandran Textiles)
+  </p>
+  <p style="margin-top: 20px;"><a href="https://share.google/CvwjMUELL6ChCllKB" target="_blank" style="color: var(--light-gold); font-weight: bold; text-decoration: none; background: rgba(212, 175, 55, 0.15); padding: 10px 20px; border-radius: 20px; display: inline-block;">Click here for Map</a></p>
+</section>
+
+<!-- CARICATURE -->
+<section id="cover" class="show">
+  <h2>Our Beautiful Journey ❤️</h2>
+  <div class="divider"></div>
+  <img src="./assets/couple-portrait.png" class="caricature" alt="Couple Portrait">
+</section>
+
+<!-- COMPLIMENTS -->
+<section id="cover" class="show">
+  <h2 style="font-size: 1rem;margin-bottom: 0px;">With Best Compliments From</h2>
+  <div class="divider"></div>
+  <div style="display:flex; justify-content:space-around; gap:20px; flex-wrap:wrap;">
+  <div class="details-box">
+    <p>A.S. Jayaraman Naidu, J. Saraswathy</p>
+    <p>N. Ananthan, A. Padmavathy</p>
+    <p>D.N. Shankar, Jayalakshmi Shankar</p>
+    <p>R. Hariharan, A. Aiswarya</p>
+    <p>K. Karthi Kothandaram</p>
+    <!-- <p>R. Santhana Krishanan, S. Shanthi</p>
+    <p>K. Manorama Kannaiyan</p>
+    <p>G. Bhuvaneshwari Gunasekaran</p>
+    <p>B. Sridhar, S. Maheswari</p>
+    <p>K. Rameshbabu, R. Rupavathi</p>
+    <p>G. Suseendaran, S. KavyaPriya</p>
+    <p>S. Balaji, B. Deepthi</p> -->
+
+
+  </div>
+  <!-- <div class="details-box">
+    
+    
+    <p>J. Sathish Kumar, S. Yamunabai</p>
+    <p>C. Vasudevan, V. Shobana</p>
+    <p>G. Balaji, B. Bharathi</p>
+    <p>M.S. Sridhar, S. Roopa</p>
+    <p>M.S. Sarathi, S. Ramya</p>
+    <p>C.V. Naveen</p>
+    <p>C.V. Balakrishnan</p>    
+    <p>S. Manasa</p>
+    <p>B. Sahitya</p>
+    <p>B. Harini</p>      
+    <p>M.S. Tharun</p>
+    <p>M.S. Chinmai</p>
+    <p>M.S. Joshnika</p> 
+  </div>-->
+  </div>
+
+  <div class="hashtag">
+    Alhamdulillah,<br>
+    #PReAM_Wedding
+  </div>
+</section>
+
+</div>
+
+<footer></footer>
+
+<button class="music-btn" onclick="toggleMusic()">🎵 Music</button>
+<!-- <button class="music-btn" onclick="document.getElementById('bgMusic').play()">TEST PLAY</button> -->
+
+<audio id="bgMusic" loop>
+  <source src="./assets/ShravanSridharMalargalKetten.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+/* 1. GET ELEMENTS FIRST */
+const music = document.getElementById("bgMusic");
+const sections = document.querySelectorAll("section");
+
+
+/* 2. SECTION ANIMATION (keep your existing behavior) */
+window.addEventListener("scroll", () => {
+  sections.forEach(sec => {
+    const top = sec.getBoundingClientRect().top;
+    if (top < window.innerHeight - 100) {
+      sec.classList.add("show");
+    }
+  });
+});
+
+
+/* 3. INTRO SCREEN (tap to enter) */
+function enterSite() {
+  music.play().then(() => {
+    fadeInMusic();
+  }).catch(err => console.log(err));
+
+  const overlay = document.getElementById("introOverlay");
+  overlay.style.opacity = "0";
+
+  setTimeout(() => {
+    overlay.style.display = "none";
+  }, 800);
+}
+
+
+/* 4. FADE-IN MUSIC (premium feel) */
+function fadeInMusic() {
+  music.volume = 0;
+  let vol = 0;
+
+  const interval = setInterval(() => {
+    if (vol < 1) {
+      vol += 0.05;
+      music.volume = vol;
+    } else {
+      clearInterval(interval);
+    }
+  }, 200);
+}
+
+
+/* 5. MUSIC BUTTON CONTROL */
+function toggleMusic() {
+  if (music.paused) {
+    music.play().catch(err => console.log(err));
+  } else {
+    music.pause();
+  }
+}
+</script>
+
+</body>
+</html>

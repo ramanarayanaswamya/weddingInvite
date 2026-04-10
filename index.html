@@ -101,6 +101,7 @@ section{
   transform:translateY(40px);
   transition:all 1s ease;
   scroll-snap-align: start;
+  z-index:1;
 }
 
 section.show{
@@ -220,8 +221,11 @@ p{
   border-radius:50px;
   font-family:'Cinzel';
   cursor:pointer;
-  z-index:99999;
+  z-index:999999;
 }
+
+
+
 
 /* FOOTER HASHTAG */
 .hashtag{
@@ -372,7 +376,7 @@ p{
 </section>
 
 <!-- VENUE -->
-<section id="cover" class="show">
+<section id="cover" class="show" style="z-index: 999999;">
   <h2 style="margin-bottom: 0px;">Venue</h2>
   <div class="divider"></div>
   <p><b>Geetha Citadel Wedding & Conventions</b></p>
@@ -380,7 +384,7 @@ p{
   Avadi to Mt. Poonamallee Highway,<br>
   (Opposite to Avadi Jeyachandran Textiles)
   </p>
-  <p style="margin-top: 20px;"><a href="https://share.google/CvwjMUELL6ChCllKB" target="_blank" style="color: var(--gold); font-weight: bold; text-decoration: none; background: rgba(198, 167, 94, 0.15); padding: 10px 20px; border-radius: 20px; display: inline-block;">Click here for Map</a></p>
+  <p class="venue-btn" style="margin-top: 20px;"><a href="https://share.google/CvwjMUELL6ChCllKB" target="_blank" style="color: var(--gold); font-weight: bold; text-decoration: none; background: rgba(198, 167, 94, 0.15); padding: 10px 20px; border-radius: 20px; display: inline-block;">Click here for Map</a></p>
 </section>
 
 <!-- CARICATURE -->

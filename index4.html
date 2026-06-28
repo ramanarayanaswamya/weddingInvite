@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Invitation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Base Styling & Background */
+        body {
+            margin: 0;
+            padding: 20px 10px;
+            background-color: #1a1a1a; /* Dark background to contrast the scroll */
+            font-family: 'Playfair Display', serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Scroll Container */
+        .scroll-container {
+            width: 100%;
+            max-width: 450px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Wooden Rollers (Top & Bottom) */
+        .roller {
+            width: 105%;
+            height: 22px;
+            background: linear-gradient(to bottom, #8a1a1a, #cc3333, #660000);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+            z-index: 3;
+            border: 2px solid #ffd700;
+        }
+
+        /* The Main Maroon Cloth/Paper */
+        .scroll-body {
+            width: 95%;
+            background-color: #800020; /* Deep Maroon */
+            box-shadow: 0 10px 25px rgba(0,0,0,0.7);
+            position: relative;
+            z-index: 2;
+            overflow: hidden;
+            
+            /* Unrolling Animation */
+            max-height: 0;
+            animation: unroll 100s cubic-bezier(0.1, 1, 0.1, 1) forwards;
+            animation-delay: 0.5s;
+        }
+
+        /* Inner Golden Border Frame */
+        .gold-border-frame {
+            margin: 15px;
+            padding: 25px 15px;
+            border: 3px double #ffd700;
+            outline: 1px solid #ffd700;
+            outline-offset: -6px;
+            position: relative;
+            text-align: center;
+            color: #ffd700; /* Golden Text */
+        }
+
+        /* Traditional Corner Ornaments using CSS shapes/effects */
+        .gold-border-frame::before, .gold-border-frame::after {
+            content: "❖";
+            position: absolute;
+            font-size: 14px;
+            color: #ffd700;
+            background-color: #800020;
+            padding: 0 3px;
+        }
+        .gold-border-frame::before { top: -10px; left: 10px; }
+        .gold-border-frame::after { bottom: -10px; right: 10px; }
+
+        /* Golden Tassels / Fringe at the bottom */
+        .tassels {
+            width: 95%;
+            height: 20px;
+            background: repeating-linear-gradient(
+                90deg,
+                #ffd700,
+                #b38f00 4px,
+                #ffd700 8px
+            );
+            border-radius: 0 0 5px 5px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            z-index: 1;
+        }
+
+        /* Typography & Content Alignment */
+        .header-tag {
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+
+        .main-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.8rem;
+            margin: 10px 0;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .parents-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 15px 0;
+            line-height: 1.4;
+        }
+
+        .invitation-text {
+            font-style: italic;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin: 15px 10px;
+            color: #fffdd0; /* Cream color for readability */
+        }
+
+        .couple-section {
+            margin: 25px 0;
+        }
+
+        .groom, .bride {
+            font-size: 1.25rem;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            color: #ffffff;
+            text-shadow: 0 0 5px rgba(255,215,0,0.4);
+        }
+
+        .degree {
+            font-size: 0.75rem;
+            font-family: sans-serif;
+            vertical-align: middle;
+            color: #ffd700;
+        }
+
+        .conjunction {
+            font-family: 'Great Vibes', cursive;
+            font-size: 1.8rem;
+            margin: 5px 0;
+            color: #ffd700;
+        }
+
+        .parent-details {
+            font-size: 0.85rem;
+            font-style: italic;
+            color: #fffdd0;
+            margin-top: 5px;
+        }
+
+        .divider {
+            margin: 20px auto;
+            width: 60%;
+            border: 0;
+            border-top: 1px double #ffd700;
+        }
+
+        .event-title {
+            font-family: 'Cinzel', serif;
+            text-decoration: underline;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .event-details {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 5px;
+        }
+
+        .venue {
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        .compliments-section {
+            margin-top: 30px;
+            font-size: 0.8rem;
+            line-height: 1.6;
+            color: #fffdd0;
+        }
+
+        .compliments-title {
+            font-style: italic;
+            font-size: 0.9rem;
+            text-decoration: underline;
+            margin-bottom: 8px;
+            color: #ffd700;
+        }
+
+        /* --- Animations --- */
+        @keyframes unroll {
+            0% {
+                max-height: 0;
+            }
+            100% {
+                max-height: 1500px; /* High enough value to clear all content */
+            }
+        }
+
+        /* Mobile optimization tweaks */
+        @media (max-width: 375px) {
+            .gold-border-frame {
+                margin: 10px;
+                padding: 15px 10px;
+            }
+            .main-title {
+                font-size: 2.3rem;
+            }
+            .groom, .bride {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="scroll-container">
+        <div class="roller"></div>
+
+        <div class="scroll-body">
+            <div class="gold-border-frame">
+                
+                <div class="header-tag">Sri Ramajayam</div>
+                <div class="main-title">Wedding Invitation</div>
+                
+                <div class="parents-name">
+                    Mrs. Jayalakshmi Shankar<br>&<br>Mr. D.N. Shankar
+                </div>
+
+                <div class="invitation-text">
+                    request the honour of your gracious presence and blessings on the auspicious occasion of the wedding ceremony of their elder son
+                </div>
+
+                <div class="couple-section">
+                    <span class="header-tag" style="font-size: 0.75rem;">Chiranjeevi:</span><br>
+                    <span class="groom">S. Sanjay Prabhaakar, <span class="degree">B.Tech. (ECE)</span></span>
+                    
+                    <div class="conjunction">with</div>
+                    
+                    <span class="header-tag" style="font-size: 0.75rem;">Sowbhagyawathi:</span><br>
+                    <span class="bride">M.S. Lakshmi, <span class="degree">B.Sc. (CS)</span></span>
+                    <div class="parent-details">(D/o. Mr. Munindharan & Mrs. Sujatha)</div>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="event-details">
+                    on <span class="venue">Sunday, 23rd August 2026</span><br>
+                    between 7.30 a.m. and 9.00 a.m.<br>
+                    at <span class="venue">Meenakshi Sundarar Hall</span><br>
+                    7B, MTH Road, Padi, Chennai - 600 050.<br>
+                    <span style="font-size: 0.85rem;">(Near Padi Saravana Stores)</span>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="event-title">Reception</div>
+                <div class="event-details">
+                    on <span class="venue">22nd August 2026, Saturday</span><br>
+                    7.00 p.m. onwards
+                </div>
+
+                <div class="compliments-section">
+                    <div class="compliments-title">With Best Compliments from:</div>
+                    Mr. N. Anandhan - Mrs. Padmavathi<br>
+                    Mr. N. Ashokan - Mrs. Neelavathi<br>
+                    (Late) Mr. N. Kesavan - Mrs. Chithra<br>
+                    (Late) Mr. N. Ravichandran - Mrs. Andal<br>
+                    Mr. M. Meenakshi Sundaresan - Mrs. Uthira<br>
+                    Mr. S. Karthik Narayan, <span style="font-size: 0.7rem;">MBA.,</span><br>
+                    Master M. Vaibhav
+                </div>
+
+            </div>
+        </div>
+
+        <div class="tassels"></div>
+    </div>
+
+</body>
+</html>

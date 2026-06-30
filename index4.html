@@ -220,29 +220,53 @@
         /* Ribbon shown before unroll */
         .ribbon {
             position: absolute;
-            top: -18px;
+            top: -44px;
             left: 50%;
             transform: translateX(-50%);
-            background: linear-gradient(90deg, #b30000, #ff4d4d);
+            width: 317px;
+            height: 158px;
+            background: url("assets/golden bow.png") center/contain no-repeat;
+            background-size: contain;
             color: #fff8e6;
-            padding: 8px 18px;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-family: 'Cinzel', serif;
+            font-size: 0.95rem;
             font-weight: 600;
-            letter-spacing: 1px;
-            border-radius: 20px;
-            box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+            letter-spacing: 0.8px;
+            border-radius: 16px;
+           /*  box-shadow: 0 10px 22px rgba(0,0,0,0.18);*/
             z-index: 6;
             cursor: pointer;
             user-select: none;
             transition: transform 0.25s ease, opacity 0.25s ease;
+            animation: heartbeat 1.7s ease-in-out infinite;
         }
 
-        .ribbon span { display: inline-block; transform: translateY(-1px); }
+        .ribbon::after {
+            content: none;
+        }
 
         .scroll-container.open .ribbon {
             opacity: 0;
             transform: translateX(-50%) translateY(-10px) scale(0.95);
             pointer-events: none;
+            animation: none;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: translateX(-50%) scale(1); }
+            25% { transform: translateX(-50%) scale(1.03); }
+            50% { transform: translateX(-50%) scale(0.99); }
+            75% { transform: translateX(-50%) scale(1.02); }
+        }
+
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 0 0 rgba(255,215,0,0.35); }
+            50% { box-shadow: 0 0 20px 10px rgba(255,215,0,0.08); }
+            100% { box-shadow: 0 0 0 0 rgba(255,215,0,0.0); }
         }
 
         /* Reveal rows inside the invitation one-by-one for a reading feel
@@ -281,9 +305,10 @@
     </style>
 </head>
 <body>
+    <audio id="invitation-audio" src="assets/Marriage At 2AM (Background Score).mp3" preload="metadata"></audio>
 
     <div class="scroll-container">
-        <div class="ribbon" onclick="unrollScroll(this.closest('.scroll-container'))"><span>Click to Unroll</span></div>
+        <div class="ribbon" onclick="unrollScroll(this.closest('.scroll-container'))" aria-label="Play invitation music"></div>
         <div class="roller"></div>
 
         <div class="scroll-body">
@@ -347,11 +372,21 @@
     </div>
 
     <script>
+        function playInvitationAudio() {
+            const audio = document.getElementById('invitation-audio');
+            if (!audio) return;
+            audio.currentTime = 0;
+            audio.play().catch(() => {
+                // Play may fail if browser blocks it; user can click again.
+            });
+        }
+
         function unrollScroll(container) {
             if (!container) return;
             if (container.classList.contains('open')) return; // already opened
             // add 'open' to trigger CSS animation
             container.classList.add('open');
+            playInvitationAudio();
 
             // Start revealing rows earlier than animation end (at 30% of animation duration)
             const scrollBody = container.querySelector('.scroll-body');
